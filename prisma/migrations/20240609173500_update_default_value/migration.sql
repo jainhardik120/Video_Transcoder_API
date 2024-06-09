@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "video" ALTER COLUMN "status" SET DEFAULT 'INITIAL';
