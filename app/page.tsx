@@ -12,7 +12,7 @@ type UploadInfo = {
   video_id: string
 }
 
-export const hostName: string = "http://localhost:9001";
+export const hostName: string = process.env.HOST_URL || "http://localhost:9001";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
