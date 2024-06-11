@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react"
 import { Socket, io } from "socket.io-client"
 
-const hostName: string = process.env.API_HOST_URL || "http://localhost:9001";
+const hostName: string = "https://video-transcoder-api.onrender.com"
 
 export type IOContext = {
   startSocket: (videoId: string) => void;

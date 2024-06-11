@@ -5,9 +5,8 @@ import { FormEvent, useEffect, useState } from "react";
 import { IOContext, IOContextProvider, useIOContext } from "./IOContext";
 import Link from "next/link";
 
-const hostName: string = process.env.API_HOST_URL || "http://localhost:9001";
-
 export default function Home() {
+  const hostName = "https://video-transcoder-api.onrender.com"
   const [file, setFile] = useState<File | null>(null);
   const [title, setTitle] = useState("");
 
