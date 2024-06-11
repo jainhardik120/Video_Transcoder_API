@@ -25,9 +25,14 @@ function publishLog(log) {
   publisher.publish(`logs:${VIDEO_ID}`, JSON.stringify({ log }))
 }
 
+function publishUpdate(status) {
+  console.log(status);
+  publisher.publish(`job-updates`, JSON.stringify({ videoId: VIDEO_ID, status: status }))
+}
+
 async function init() {
   publishLog("Started...");
-
+  publishUpdate('PROCESSING')
   const p = exec("bash transcoder.sh");
 
   p.stdout.on('data', function (data) {
@@ -36,6 +41,7 @@ async function init() {
 
   p.stdout.on('error', function (data) {
     publishLog(`Error : ${data.toString()}`);
+    publishUpdate('FAILED')
   })
 
   p.on('close', async function () {
@@ -59,7 +65,8 @@ async function init() {
 
       await s3Client.send(command);
       publishLog(`Uploaded ${filePath}`);
-    }
+      }
+    publishUpdate('COMPLETED')
     publisher.quit();
   })
 }
