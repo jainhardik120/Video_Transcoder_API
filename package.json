@@ -15,7 +15,6 @@
     "@aws-sdk/client-s3": "^3.592.0",
     "@aws-sdk/s3-request-presigner": "^3.592.0",
     "@prisma/client": "^5.15.0",
-    "bullmq": "^5.7.15",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

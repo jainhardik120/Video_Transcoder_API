@@ -44,8 +44,8 @@ const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID_N || "";
 const SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY_N || "";
 
 const config = {
-  CLUSTER: 'arn:aws:ecs:ap-south-1:425458867902:cluster/VideoTranscoderCluster',
-  TASK: 'arn:aws:ecs:ap-south-1:425458867902:task-definition/video-transcoder-task:3'
+  CLUSTER: process.env.CLUSTER_ARN,
+  TASK: process.env.TASK_ARN
 }
 
 const prisma = new PrismaClient({})
@@ -137,8 +137,8 @@ router.post('/complete-multipart-upload', validate(completeMultipartUploadSchema
       networkConfiguration: {
         awsvpcConfiguration: {
           assignPublicIp: 'ENABLED',
-          subnets: ['subnet-04ccf05eaa460a368', 'subnet-09cffca8375ed2215', 'subnet-07b168e5dbbf8419c'],
-          securityGroups: ['sg-04db5d28f40cdf906']
+          subnets: [process.env.SUBNET_1,process.env.SUBNET_2,process.env.SUBNET_3],
+          securityGroups: [process.env.SECURITY_GROUP_1]
         }
       },
       overrides: {
