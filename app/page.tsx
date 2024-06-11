@@ -5,14 +5,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { IOContext, IOContextProvider, useIOContext } from "./IOContext";
 import Link from "next/link";
 
-type UploadInfo = {
-  UploadId: string;
-  Key: string;
-  Bucket: string;
-  video_id: string
-}
-
-export const hostName: string = process.env.HOST_URL || "http://localhost:9001";
+const hostName: string = process.env.HOST_URL || "http://localhost:9001";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);

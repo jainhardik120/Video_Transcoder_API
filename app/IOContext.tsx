@@ -2,7 +2,8 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react"
 import { Socket, io } from "socket.io-client"
-import { hostName } from "./page"
+
+const hostName: string = process.env.HOST_URL || "http://localhost:9001";
 
 export type IOContext = {
   startSocket: (videoId: string) => void;
